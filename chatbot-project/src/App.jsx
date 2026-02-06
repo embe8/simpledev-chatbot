@@ -1,69 +1,8 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { ChatInput } from './components/ChatInput';
-import RobotProfileImage from './assets/robot.png'; //default export
-import UserProfileImage from './assets/user.png';
+import ChatMessages from './components/ChatMessages';
 import './App.css';
 
-
-function ChatMessage(props) {//props can be { message, sender }
-//const message = props.message; destructuring:
-const { message, sender } = props;
-//const sender = props.sender;
-
-/*if (sender === 'robot') {
-  return (
-    <div>
-      <img src="robot.png" width="50" />
-      {message}
-    </div>
-  );
-}*/
-
-  return (
-    <div className={ 
-      sender === 'user' 
-        ? 'chat-message-user' 
-        : 'chat-message-robot'
-    }>
-      {sender === 'robot' && (
-        <img src= {RobotProfileImage}
-        className="chat-message-profile"/>
-      )}
-      <div className="chat-message-text">
-        {message}
-      </div>
-      { sender === 'user' && (
-        <img src= {UserProfileImage} 
-        className="chat-message-profile"/>
-      )}
-    </div>
-  );
-}
-
-function ChatMessages({ 
-  chatMessages }) {
-    const chatMessageRef = useRef(null);
-    useEffect(() => {
-      const containerElem = chatMessageRef.current;
-      if (containerElem) {
-        containerElem.scrollTop = containerElem.scrollHeight;
-      }
-    }, [chatMessages]);
-
-  return (
-    <div className="chat-messages-container">
-      {chatMessages.map((chatMessage) => {
-        return (
-          <ChatMessage
-            message={chatMessage.message}
-            sender={chatMessage.sender}
-            key={chatMessage.id}
-          />
-        );
-      })}
-    </div>
-  );
-}
 
 function App() {
   const array = useState([{
