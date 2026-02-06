@@ -5,7 +5,7 @@ import './App.css';
 
 
 function App() {
-  const array = useState([{
+  const [array] = useState([{
     message:'Hello, chatbot',
     sender: 'user',
     id: 'id1'
