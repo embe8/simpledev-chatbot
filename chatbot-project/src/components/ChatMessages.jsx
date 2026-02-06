@@ -1,29 +1,33 @@
 import { useRef, useEffect } from 'react';
 import { ChatMessage } from './ChatMessage';
 
-function ChatMessages({ 
-    chatMessages }) {
-      const chatMessageRef = useRef(null);
-      useEffect(() => {
-        const containerElem = chatMessageRef.current;
-        if (containerElem) {
-          containerElem.scrollTop = containerElem.scrollHeight;
-        }
-      }, [chatMessages]);
+export function ChatMessages({ chatMessages }) {
+  const chatMessageRef = useRef(null);
   
-    return (
-      <div className="chat-messages-container">
-        {chatMessages.map((chatMessage) => {
-          return (
-            <ChatMessage
-              message={chatMessage.message}
-              sender={chatMessage.sender}
-              key={chatMessage.id}
-            />
-          );
-        })}
-      </div>
-    );
+  useEffect(() => {
+    const containerElem = chatMessageRef.current;
+    if (containerElem) {
+      containerElem.scrollTop = containerElem.scrollHeight;
+    }
+  }, [chatMessages]);
+
+  // Add this check
+  if (!chatMessages || !Array.isArray(chatMessages)) {
+    return <div className="chat-messages-container">No messages</div>;
   }
 
-  export default ChatMessages;
+  return (
+    <div className="chat-messages-container" ref={chatMessageRef}>
+      {chatMessages.map((chatMessage) => {
+        return (
+          <ChatMessage
+            message={chatMessage.message}
+            sender={chatMessage.sender}
+            key={chatMessage.id}
+          />
+        );
+      })}
+    </div>
+  );
+}
+

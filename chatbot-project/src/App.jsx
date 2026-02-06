@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { ChatInput } from './components/ChatInput';
-import ChatMessages from './components/ChatMessages';
+import { ChatMessages } from './components/ChatMessages';
 import './App.css';
 
 
 function App() {
-  const [array] = useState([{
+  const [chatMessages, setChatMessages] = useState([{
     message:'Hello, chatbot',
     sender: 'user',
     id: 'id1'
@@ -22,7 +22,6 @@ function App() {
     sender: 'robot',
     id: 'id4'
   }]);
-  const [chatMessages, setChatMessages] = array // array destructuring
   //const chatMessages = array[0]; // first value is the current data
   //const setChatMessages = array[1]; // second value is the function to update the data
 
@@ -38,7 +37,7 @@ function App() {
   }); this can be inserted directly in return below*/
 
   return (
-    <div classname="app-container">
+    <div className="app-container">
 
       <ChatMessages 
         chatMessages = {chatMessages}

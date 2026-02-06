@@ -1,4 +1,7 @@
-function ChatMessage({ message, sender }) {//props can be { message, sender }
+import RobotProfileImage from '../assets/robot.png'; //default export
+import UserProfileImage from '../assets/user.png';
+
+export function ChatMessage({ message, sender }) {//props can be { message, sender }
 //const message = props.message; destructuring:
 //const { message, sender } = props;
 //const sender = props.sender;
@@ -32,3 +35,4 @@ function ChatMessage({ message, sender }) {//props can be { message, sender }
     </div>
   );
 }
+
