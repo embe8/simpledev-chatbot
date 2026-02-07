@@ -1,4 +1,4 @@
-import '../components/header.css';
+import { Header } from '../components/Header';
 import './HomePage.css';
 
 export function HomePage() {
@@ -6,7 +6,7 @@ export function HomePage() {
     <>
       <title>Ecommerce Project</title>
 
-     
+      <Header />
 
       <div className="home-page">
         <div className="products-grid">
